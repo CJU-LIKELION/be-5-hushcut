@@ -7,6 +7,10 @@ public class MemberService {
     private final MemberRepository memberRepository = new MemberRepository();
 
     public boolean register(Role member) {
+        if (memberRepository.existsByName(member.getName())) {
+            return false;
+        }
+
         return memberRepository.save(member);
     }
 

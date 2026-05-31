@@ -16,12 +16,7 @@ public class MockMemberRepository implements MemberRepository {
 
     @Override
     public boolean save(Role member) {
-        if (existsByName(member.getName())) {
-            return false;
-        }
-
-        members.add(member);
-        return true;
+        return !existsByName(member.getName());
     }
 
     @Override

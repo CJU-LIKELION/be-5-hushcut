@@ -11,6 +11,10 @@ public class MemberService {
     }
 
     public boolean register(Role member) {
+        if (memberRepository.existsByName(member.getName())) {
+            return false;
+        }
+
         return memberRepository.save(member);
     }
 
